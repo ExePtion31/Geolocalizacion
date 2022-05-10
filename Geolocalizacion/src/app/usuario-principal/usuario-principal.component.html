@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <app-header></app-header>
+    <title>Mapa | Geolocalización</title>
+</head>
+
+
+<div id="container" class="bg-secondary text-light">
+    <!--al introducir los datos obtendremos las coordenadas (LatLng )que nos permite cambiar var latlng para personalizar nuestro mapa -->
+    <div class="row mb-5">
+        <img src="https://www.uninpahu.edu.co/wp-content/themes/understrap-child/img/logo-uninpahu-blanco.svg" alt=""
+            width="266" height="45">
+    </div>
+    <div id="texto" class="card bg-primary">
+        <h3>Salon a localizar</h3>
+        <!--se inserta la dirección completa que queremos mostrar en el mapa-->
+        <p>Sobreescriba la dirección<br>puede indicar coordenadas lat,lng separadas por coma (,):</p>
+        <div class="form-floating mb-3">
+            <input id="address" type="textbox" class="form-control" size="38" maxlength="80"
+                placeholder="Dirección o Lat, Lng">
+            <label class="text-dark">Dirección o Lat, Lng</label>
+        </div>
+        <table class="table text-light">
+            <thead>
+                <tr>
+                    <th scope="col">Latitud: <span style="color:red;" id="x"></span></th>
+                </tr>
+                <tr>
+                    <th scope="col">Longitud: <span style="color:red;" id="y"></span></th>
+                </tr>
+                <tr>
+                    <th scope="col">Dirección completa:<br><span style="color:blue;" id="direccion"></span></th>
+                </tr>
+            </thead>
+        </table>
+        <input type="button" class="btn btn-light mt-3" value="Localizar" onclick="captureData()">
+    </div>
+</div>
+
+<app-footer></app-footer>
+
+</html>
