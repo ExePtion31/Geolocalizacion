@@ -6,16 +6,18 @@ public class StudentRequest {
     private int edad;
     private String correo;
     private long telefono;
+    private String password;
 
     public StudentRequest() {
     }
 
-    public StudentRequest(String nombre, String apellido, int edad, String correo, long telefono) {
+    public StudentRequest(String nombre, String apellido, int edad, String correo, long telefono, String password) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.edad = edad;
         this.correo = correo;
         this.telefono = telefono;
+        this.password = password;
     }
 
     public String getNombre() {
@@ -56,5 +58,13 @@ public class StudentRequest {
 
     public void setTelefono(long telefono) {
         this.telefono = telefono;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

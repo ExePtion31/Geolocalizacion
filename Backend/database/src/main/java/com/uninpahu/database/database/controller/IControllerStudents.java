@@ -8,13 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 public interface IControllerStudents {
 
-    ResponseEntity<List<Student>> list();
+    ResponseEntity<Optional<Student>> fetchUser(loginRequest user);
 
-    ResponseEntity<Optional<Student>> fetchUser(int id);
-
-    ResponseEntity<Message> create(@RequestBody StudentRequest studentRequest);
-
-    ResponseEntity<Message> update(@PathVariable("id") int id, @RequestBody StudentRequest studentRequest);
-
-    ResponseEntity<Message> delete(@PathVariable("id") int id);
+    ResponseEntity<Message> create(StudentRequest studentRequest);
 }

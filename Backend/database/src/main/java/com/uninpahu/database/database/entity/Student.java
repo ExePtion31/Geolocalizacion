@@ -16,17 +16,20 @@ public class Student {
     private String correo;
     @Column
     private long telefono;
+    @Column
+    private String password;
 
     public Student(){
 
     }
 
-    public Student(String nombre, String apellido, int edad, String correo, long telefono) {
+    public Student(String nombre, String apellido, int edad, String correo, long telefono, String password) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.edad = edad;
         this.correo = correo;
         this.telefono = telefono;
+        this.password = password;
     }
 
     public int getId() {
@@ -75,5 +78,13 @@ public class Student {
 
     public void setTelefono(long telefono) {
         this.telefono = telefono;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
