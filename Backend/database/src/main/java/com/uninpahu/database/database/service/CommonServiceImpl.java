@@ -1,6 +1,6 @@
 package com.uninpahu.database.database.service;
 
-import com.uninpahu.database.database.entity.Student;
+import com.uninpahu.database.database.entity.User;
 import com.uninpahu.database.database.repository.IRepositoryStudents;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,12 +19,12 @@ public class CommonServiceImpl implements ICommonService {
     }
 
     @Override
-    public Optional<Student> getByCorreo(String correo) {
+    public Optional<User> getByCorreo(String correo) {
         return repository.getByCorreo(correo);
     }
 
     @Override
-    public Student save(Student student) {
-        return repository.save(student);
+    public User save(User user) {
+        return repository.save(user);
     }
 }

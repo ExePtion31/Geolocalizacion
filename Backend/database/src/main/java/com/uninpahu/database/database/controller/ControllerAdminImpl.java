@@ -1,6 +1,6 @@
 package com.uninpahu.database.database.controller;
 
-import com.uninpahu.database.database.entity.Student;
+import com.uninpahu.database.database.entity.User;
 import com.uninpahu.database.database.request.*;
 import com.uninpahu.database.database.service.*;
 import org.apache.commons.lang3.StringUtils;
@@ -15,6 +15,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/admin")
+@CrossOrigin(origins = "http://localhost:4200")
 public class ControllerAdminImpl implements IControllerAdmin{
     @Autowired
     AdminServiceImpl adminService;
@@ -27,11 +28,11 @@ public class ControllerAdminImpl implements IControllerAdmin{
 
     @GetMapping("/list")
     @Override
-    public ResponseEntity<List<Student>> list() {
+    public ResponseEntity<List<User>> list() {
         try {
-            List<Student> students = adminService.listAll();
+            List<User> users = adminService.listAll();
 
-            return new ResponseEntity<List<Student>>(students, HttpStatus.OK);
+            return new ResponseEntity<List<User>>(users, HttpStatus.OK);
         } catch (Exception err) {
             return new ResponseEntity(new Message(err.getMessage()), HttpStatus.BAD_GATEWAY);
         }
@@ -39,13 +40,13 @@ public class ControllerAdminImpl implements IControllerAdmin{
 
     @GetMapping("/list/{id}")
     @Override
-    public ResponseEntity<Optional<Student>> fetchUser(@PathVariable int id) {
+    public ResponseEntity<Optional<User>> fetchUser(@PathVariable int id) {
         try {
             if(!adminService.existById(id)) {
                 return new ResponseEntity(new Message("Usuario no encontrado"), HttpStatus.NOT_FOUND);
             }
-            Optional<Student> student = adminService.getOne(id);
-            return new ResponseEntity<Optional<Student>>(student, HttpStatus.OK);
+            Optional<User> student = adminService.getOne(id);
+            return new ResponseEntity<Optional<User>>(student, HttpStatus.OK);
         } catch(Exception err) {
             return new ResponseEntity(new Message(err.getMessage()), HttpStatus.BAD_GATEWAY);
         }
@@ -59,20 +60,20 @@ public class ControllerAdminImpl implements IControllerAdmin{
                 return new ResponseEntity(new Message("Este correo ya se encuentra registrado"), HttpStatus.BAD_REQUEST);
             }else if (StringUtils.isBlank(studentRequest.getNombre())) {
                 return new ResponseEntity(new Message("El nombre es obligatorio"), HttpStatus.BAD_REQUEST);
-            } else if (StringUtils.isBlank(studentRequest.getApellido())) {
-                return new ResponseEntity(new Message("El apellido es obligatorio"), HttpStatus.BAD_REQUEST);
+            } else if (studentRequest.getRole() < 0 && studentRequest.getRole() > 1) {
+                return new ResponseEntity(new Message("El rol no existe"), HttpStatus.BAD_REQUEST);
             } else if (StringUtils.isBlank(studentRequest.getCorreo())) {
                 return new ResponseEntity(new Message("El correo es obligatorio"), HttpStatus.BAD_REQUEST);
-            } else if (studentRequest.getEdad() < 0) {
-                return new ResponseEntity(new Message("Ingrese una edad válida"), HttpStatus.BAD_REQUEST);
-            } else if (studentRequest.getTelefono() < 0) {
-                return new ResponseEntity(new Message("Ingrese un teléfono válida"), HttpStatus.BAD_REQUEST);
-            } else if (StringUtils.isBlank(studentRequest.getPassword())) {
+            } else if (StringUtils.isBlank(studentRequest.getJornada())) {
+                return new ResponseEntity(new Message("Ingrese una jornada"), HttpStatus.BAD_REQUEST);
+            } else if (StringUtils.isBlank(studentRequest.getCarrera())) {
+                return new ResponseEntity(new Message("Ingrese una carrera"), HttpStatus.BAD_REQUEST);
+            } if (StringUtils.isBlank(studentRequest.getPassword())) {
                 return new ResponseEntity(new Message("La contraseña es obligatoria"), HttpStatus.BAD_REQUEST);
             }
 
-            Student student = new Student(studentRequest.getNombre(), studentRequest.getApellido(), studentRequest.getEdad(), studentRequest.getCorreo(), studentRequest.getTelefono(), encryptService.encryptPassword(studentRequest.getPassword()));
-            commonService.save(student);
+            User user = new User(studentRequest.getNombre(), studentRequest.getCorreo(), encryptService.encryptPassword(studentRequest.getPassword()), studentRequest.getJornada(), studentRequest.getCarrera(), studentRequest.getRole());
+            commonService.save(user);
             return new ResponseEntity(new Message("Usuario creado exitosamente"), HttpStatus.OK);
         } catch (Exception err) {
             return new ResponseEntity(new Message(err.getMessage()), HttpStatus.BAD_GATEWAY);
@@ -85,26 +86,26 @@ public class ControllerAdminImpl implements IControllerAdmin{
         try {
             if (StringUtils.isBlank(studentRequest.getNombre())) {
                 return new ResponseEntity(new Message("El nombre es obligatorio"), HttpStatus.BAD_REQUEST);
-            } else if (StringUtils.isBlank(studentRequest.getApellido())) {
-                return new ResponseEntity(new Message("El apellido es obligatorio"), HttpStatus.BAD_REQUEST);
+            } else if (studentRequest.getRole() < 0 && studentRequest.getRole() > 1) {
+                return new ResponseEntity(new Message("El rol no existe"), HttpStatus.BAD_REQUEST);
             } else if (StringUtils.isBlank(studentRequest.getCorreo())) {
                 return new ResponseEntity(new Message("El correo es obligatorio"), HttpStatus.BAD_REQUEST);
-            } else if (studentRequest.getEdad() < 0) {
-                return new ResponseEntity(new Message("Ingrese una edad válida"), HttpStatus.BAD_REQUEST);
-            } else if (studentRequest.getTelefono() < 0) {
-                return new ResponseEntity(new Message("Ingrese un teléfono válida"), HttpStatus.BAD_REQUEST);
-            } else if (StringUtils.isBlank(studentRequest.getPassword())) {
+            } else if (StringUtils.isBlank(studentRequest.getJornada())) {
+                return new ResponseEntity(new Message("Ingrese una jornada"), HttpStatus.BAD_REQUEST);
+            } else if (StringUtils.isBlank(studentRequest.getCarrera())) {
+                return new ResponseEntity(new Message("Ingrese una carrera"), HttpStatus.BAD_REQUEST);
+            } if (StringUtils.isBlank(studentRequest.getPassword())) {
                 return new ResponseEntity(new Message("La contraseña es obligatoria"), HttpStatus.BAD_REQUEST);
             }
 
-            Student student = adminService.getOne(id).get();
-            student.setNombre(studentRequest.getNombre());
-            student.setApellido(studentRequest.getApellido());
-            student.setEdad(studentRequest.getEdad());
-            student.setCorreo(studentRequest.getCorreo());
-            student.setTelefono(studentRequest.getTelefono());
-            student.setPassword(encryptService.encryptPassword(studentRequest.getPassword()));
-            commonService.save(student);
+            User user = adminService.getOne(id).get();
+            user.setNombre(studentRequest.getNombre());
+            user.setCorreo(studentRequest.getCorreo());
+            user.setPassword(encryptService.encryptPassword(studentRequest.getPassword()));
+            user.setJornada(studentRequest.getJornada());
+            user.setCarrera(studentRequest.getCarrera());
+            user.setRole(studentRequest.getRole());
+            commonService.save(user);
             return new ResponseEntity(new Message("Usuario actualizado exitosamente"), HttpStatus.OK);
         } catch (Exception err) {
             return new ResponseEntity(new Message(err.getMessage()), HttpStatus.BAD_GATEWAY);

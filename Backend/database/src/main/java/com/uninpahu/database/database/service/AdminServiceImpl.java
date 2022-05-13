@@ -1,6 +1,6 @@
 package com.uninpahu.database.database.service;
 
-import com.uninpahu.database.database.entity.Student;
+import com.uninpahu.database.database.entity.User;
 import com.uninpahu.database.database.repository.IRepositoryStudents;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,12 +21,12 @@ public class AdminServiceImpl implements IAdminService{
     }
 
     @Override
-    public Optional<Student> getOne(int id) {
+    public Optional<User> getOne(int id) {
         return repository.findById(id);
     }
 
     @Override
-    public List<Student> listAll() {
+    public List<User> listAll() {
         return repository.findAll();
     }
 

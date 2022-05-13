@@ -7,41 +7,40 @@
 <body>
     <div class="login-box">
         <h2>Registrate</h2>
-        <form>
+        <form (ngSubmit)="onRegister()" novalidate #f="ngForm">
             <div class="user-box">
-                <input type="text" name="" required="">
+                <input type="text" name="nombre" [(ngModel)]="nombre" required>
                 <label>Nombre</label>
             </div>
             <div class="user-box">
-                <input type="text" name="" required="">
+                <input type="email" name="correo" [(ngModel)]="correo" required>
                 <label>Correo</label>
             </div>
             <div class="user-box">
-                <input type="text" name="" required="">
+                <input type="password" name="password" [(ngModel)]="password" required>
                 <label>Contraseña</label>
             </div>
             <label>Jornada</label>
             <div class="user-box">
-                <select class="form-select" aria-label="Default select example">
+                <select class="form-select" aria-label="Default select example" name="jornada" [(ngModel)]="jornada" required>
                     <option selected disabled="true">Seleccione su jornada</option>
-                    <option value="1">Mañana</option>
-                    <option value="2">Tarde</option>
-                    <option value="3">Noche</option>
+                    <option value="Mañana">Mañana</option>
+                    <option value="Tarde">Tarde</option>
+                    <option value="Noche">Noche</option>
                 </select>
             </div>
             <br>
+            <label>Carrera</label>
             <div class="user-box">
-                <input type="text" name="" required="">
-                <label>Carrera</label>
+                <select class="form-select" aria-label="Default select example" name="carrera" [(ngModel)]="carrera" required>
+                    <option selected disabled="true">Seleccione su carrera</option>
+                    <option value="Ingeniería en Software">Ingeniería en Software</option>
+                    <option value="Negocios Internacionales">Negocios Internacionales</option>
+                    <option value="Fotografía">Fotografía</option>
+                </select>
             </div>
-            <div class="buttons">
-                <a href="">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    Completar
-                </a>
+            <div class="button">
+                <button type="submit" [disabled]="!f.valid">COMPLETAR</button>
             </div>
         </form>
         <div class="text-create-account">

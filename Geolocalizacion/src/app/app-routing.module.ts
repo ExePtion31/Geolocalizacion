@@ -7,7 +7,7 @@ import { UsuarioPrincipalComponent } from './usuario-principal/usuario-principal
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'registro', component: RegistroComponent},
-  {path: 'user-index', component: UsuarioPrincipalComponent}
+  {path: 'userIndex/:id', component: UsuarioPrincipalComponent}
 ];
 
 @NgModule({

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-usuario-principal',
@@ -7,19 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsuarioPrincipalComponent implements OnInit {
 
-  lat: number;
-  long: number;
-  zoom: number;
-  mapTypeId: string;
+  id:number = 0;
 
-  constructor() {
-    this.lat = 40;
-    this.long = -3;
-    this.zoom = 6;
-    this.mapTypeId = 'hybrid';
-  }
+  constructor(
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
+    this.route.params.subscribe((params: Params) => this.id = params['id']);
   }
-
 }

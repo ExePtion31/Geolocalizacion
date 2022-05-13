@@ -1,17 +1,16 @@
 package com.uninpahu.database.database.controller;
 
-import com.uninpahu.database.database.entity.Student;
+import com.uninpahu.database.database.entity.User;
 import com.uninpahu.database.database.request.*;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
 public interface IControllerAdmin {
 
-    ResponseEntity<List<Student>> list();
+    ResponseEntity<List<User>> list();
 
-    ResponseEntity<Optional<Student>> fetchUser(int id);
+    ResponseEntity<Optional<User>> fetchUser(int id);
 
     ResponseEntity<Message> create(StudentRequest studentRequest);
 

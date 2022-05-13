@@ -1,23 +1,42 @@
-package com.uninpahu.database.database.request;
+package com.uninpahu.database.database.entity;
+import javax.persistence.*;
 
-public class StudentRequest {
+@Entity
+public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    @Column
     private String nombre;
+    @Column
     private String correo;
+    @Column
     private String password;
+    @Column
     private String jornada;
+    @Column
     private String carrera;
+    @Column
     private int role;
 
-    public StudentRequest() {
+    public User(){
+
     }
 
-    public StudentRequest(String nombre, String correo, String password, String jornada, String carrera, int role) {
+    public User(String nombre, String correo, String password, String jornada, String carrera, int role) {
         this.nombre = nombre;
         this.correo = correo;
         this.password = password;
         this.jornada = jornada;
         this.carrera = carrera;
         this.role = role;
+    }
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNombre() {

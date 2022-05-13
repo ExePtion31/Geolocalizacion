@@ -1,6 +1,6 @@
 package com.uninpahu.database.database.service;
 
-import com.uninpahu.database.database.entity.Student;
+import com.uninpahu.database.database.entity.User;
 
 import java.util.Optional;
 
@@ -9,8 +9,8 @@ public interface ICommonService {
 
     boolean existByCorreo(String correo);
 
-    Optional<Student> getByCorreo(String correo);
+    Optional<User> getByCorreo(String correo);
 
-    Student save(Student student);
+    User save(User user);
 
 }
