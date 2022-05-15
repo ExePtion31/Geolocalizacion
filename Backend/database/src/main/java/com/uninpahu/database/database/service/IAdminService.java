@@ -2,8 +2,7 @@ package com.uninpahu.database.database.service;
 
 import com.uninpahu.database.database.entity.User;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 public interface IAdminService {
 

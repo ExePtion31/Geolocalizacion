@@ -12,5 +12,4 @@ public interface ICommonService {
     Optional<User> getByCorreo(String correo);
 
     User save(User user);
-
 }
