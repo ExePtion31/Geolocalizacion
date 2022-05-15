@@ -1,52 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <app-header></app-header>
     <title>Registro | Geolocalización</title>
 </head>
-<body>
-    <div class="login-box">
-        <h2>Registrate</h2>
-        <form (ngSubmit)="onRegister()" novalidate #f="ngForm">
-            <div class="user-box">
-                <input type="text" name="nombre" [(ngModel)]="nombre" required>
+
+<body class="bodyLogin">
+    <div class="wrapper">
+        <form class="login" (ngSubmit)="onRegister()" novalidate #f="ngForm" id="formRegister">
+            <p class="title">REGISTRATE</p>
+            <div class="campo">
                 <label>Nombre</label>
+                <input type="text" placeholder="Nombre completo" name="nombre" [(ngModel)]="nombre" required autofocus>
+                <i class="fa fa-user"></i>
             </div>
-            <div class="user-box">
-                <input type="email" name="correo" [(ngModel)]="correo" required>
+            <div class="campo">
                 <label>Correo</label>
+                <input type="email" placeholder="Correo" name="correo" [(ngModel)]="correo" required>
+                <i class="fa fa-envelope"></i>
             </div>
-            <div class="user-box">
-                <input type="password" name="password" [(ngModel)]="password" required>
+            <div class="campo">
                 <label>Contraseña</label>
+                <input type="password" placeholder="Contraseña" name="password" [(ngModel)]="password" required>
+                <i class="fa fa-key"></i>
             </div>
-            <label>Jornada</label>
-            <div class="user-box">
-                <select class="form-select" aria-label="Default select example" name="jornada" [(ngModel)]="jornada" required>
+            <div class="campo">
+                <label>Jornada</label>
+                <select class="form-select" aria-label="Default select example" name="jornada" [(ngModel)]="jornada"
+                    required>
                     <option selected disabled="true">Seleccione su jornada</option>
-                    <option value="Mañana">Mañana</option>
-                    <option value="Tarde">Tarde</option>
-                    <option value="Noche">Noche</option>
+                    <option value="MAÑANA">MAÑANA</option>
+                    <option value="TARDE">TARDE</option>
+                    <option value="NOCHE">NOCHE</option>
                 </select>
             </div>
-            <br>
-            <label>Carrera</label>
-            <div class="user-box">
-                <select class="form-select" aria-label="Default select example" name="carrera" [(ngModel)]="carrera" required>
+            <div class="campo">
+                <label>Carrera</label>
+                <select class="form-select" aria-label="Default select example" name="carrera" [(ngModel)]="carrera"
+                    required>
                     <option selected disabled="true">Seleccione su carrera</option>
-                    <option value="Ingeniería en Software">Ingeniería en Software</option>
-                    <option value="Negocios Internacionales">Negocios Internacionales</option>
-                    <option value="Fotografía">Fotografía</option>
+                    <option *ngFor="let career of careersArray" [value]="career.carrera">
+                        {{career.carrera}}
+                    </option>
                 </select>
             </div>
-            <div class="button">
-                <button type="submit" [disabled]="!f.valid">COMPLETAR</button>
-            </div>
+            <p>¿Ya tienes cuenta? <a routerLink=""><span>Inicia Sesión</span></a></p>
+            <button type="submit" [disabled]="!f.valid">
+                <i class="spinner"></i>
+                <span class="state">Enviar</span>
+            </button>
         </form>
-        <div class="text-create-account">
-            <label for="">¿Ya tienes cuenta? <a routerLink="">Inicia sesión</a></label>
-        </div>
     </div>
 </body>
-<app-footer></app-footer>
+
 </html>

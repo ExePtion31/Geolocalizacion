@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { StudentServiceService } from '../services/student-service.service';
+import { CareerServiceService } from '../services/career-service.service';
 import { ToastrService } from 'ngx-toastr';
 import { StudentCreate } from '../models/Student';
+import { Career } from '../models/Career';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,6 +12,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./registro.component.css']
 })
 export class RegistroComponent implements OnInit {
+
+  careersArray:Career[] = [];
 
   nombre:string = '';
   correo:string = '';
@@ -20,11 +24,27 @@ export class RegistroComponent implements OnInit {
 
   constructor(
     private studentService: StudentServiceService,
+    private careerService: CareerServiceService,
     private toastr: ToastrService,
     private router: Router
   ) { }
 
   ngOnInit(): void {
+    this.onList();
+  }
+
+  onList() : void {
+    this.careerService.list().subscribe(
+      (data:Career[]) => {
+        this.careersArray = data;
+      },
+      err => {
+        console.log(err);
+        this.toastr.warning(err.error.message, 'Error',{
+          timeOut:3000
+        });
+      }
+    );
   }
 
   onRegister():void {
