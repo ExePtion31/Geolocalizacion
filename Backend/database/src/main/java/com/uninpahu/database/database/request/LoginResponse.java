@@ -4,11 +4,13 @@ public class LoginResponse {
     private int id;
     private int role;
     private String message;
+    private String nombre;
 
-    public LoginResponse(int id, int role, String message) {
+    public LoginResponse(int id, int role, String message, String nombre) {
         this.id = id;
         this.role = role;
         this.message = message;
+        this.nombre = nombre;
     }
 
     public int getId() {
@@ -33,5 +35,13 @@ public class LoginResponse {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 }

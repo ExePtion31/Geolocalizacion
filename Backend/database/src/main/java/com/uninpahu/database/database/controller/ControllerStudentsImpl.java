@@ -34,7 +34,7 @@ public class ControllerStudentsImpl implements IControllerStudents{
                 return new ResponseEntity(new Message("Correo o contraseña incorrectas"), HttpStatus.BAD_REQUEST);
             }
 
-            return new ResponseEntity<LoginResponse>(new LoginResponse(student.get().getId(), student.get().getRole() ,"Login Exitoso"), HttpStatus.OK);
+            return new ResponseEntity<LoginResponse>(new LoginResponse(student.get().getId(), student.get().getRole() ,"Login Exitoso", student.get().getNombre()), HttpStatus.OK);
         } catch (Exception err) {
             return new ResponseEntity(new Message(err.getMessage()), HttpStatus.BAD_GATEWAY);
         }

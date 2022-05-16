@@ -1,25 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
     <title>Inicio | Geolocalización</title>
 </head>
 
-<body>
-    <div class="wrapper">
-        <form class="login" (ngSubmit)="onValidate()" novalidate #f="ngForm">
-            <p class="title">Inicia Sesión</p>
-            <input type="email" placeholder="Correo electrónico" name="correo" [(ngModel)]="correo" required autofocus>
-            <i class="fa fa-user"></i>
-            <input type="password" placeholder="Contraseña" name="password" [(ngModel)]="password" required>
-            <i class="fa fa-key"></i>
-            <p>¿Aún no tienes cuenta? <a a routerLink="/registro"><span>Registrate</span></a></p>
-            <button type="submit" [disabled]="!f.valid">
-                <i class="spinner"></i>
-                <span class="state">Ingresar</span>
-            </button>
-        </form>
-    </div>
-</body>
 
-</html>
+<div class="wrapper">
+    <form class="login" (ngSubmit)="onValidate()" novalidate #f="ngForm">
+        <p class="title">Inicia Sesión</p>
+        <input type="email" placeholder="Correo electrónico" name="correo" [(ngModel)]="correo" required autofocus>
+        <i class="fa fa-user"></i>
+        <input type="password" placeholder="Contraseña" name="password" [(ngModel)]="password" required>
+        <i class="fa fa-key"></i>
+        <p>¿Aún no tienes cuenta? <a a routerLink="/registro"><span>Registrate</span></a></p>
+        <button type="submit" [disabled]="!f.valid">
+            <i class="spinner"></i>
+            <span class="state">Ingresar</span>
+        </button>
+    </form>
+</div>

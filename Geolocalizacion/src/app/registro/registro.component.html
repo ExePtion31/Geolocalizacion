@@ -1,56 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
     <title>Registro | Geolocalización</title>
 </head>
 
-<body class="bodyLogin">
-    <div class="wrapper">
-        <form class="login" (ngSubmit)="onRegister()" novalidate #f="ngForm" id="formRegister">
-            <p class="title">REGISTRATE</p>
-            <div class="campo">
-                <label>Nombre</label>
-                <input type="text" placeholder="Nombre completo" name="nombre" [(ngModel)]="nombre" required autofocus>
-                <i class="fa fa-user"></i>
-            </div>
-            <div class="campo">
-                <label>Correo</label>
-                <input type="email" placeholder="Correo" name="correo" [(ngModel)]="correo" required>
-                <i class="fa fa-envelope"></i>
-            </div>
-            <div class="campo">
-                <label>Contraseña</label>
-                <input type="password" placeholder="Contraseña" name="password" [(ngModel)]="password" required>
-                <i class="fa fa-key"></i>
-            </div>
-            <div class="campo">
-                <label>Jornada</label>
-                <select class="form-select" aria-label="Default select example" name="jornada" [(ngModel)]="jornada"
-                    required>
-                    <option selected disabled="true">Seleccione su jornada</option>
-                    <option value="MAÑANA">MAÑANA</option>
-                    <option value="TARDE">TARDE</option>
-                    <option value="NOCHE">NOCHE</option>
-                </select>
-            </div>
-            <div class="campo">
-                <label>Carrera</label>
-                <select class="form-select" aria-label="Default select example" name="carrera" [(ngModel)]="carrera"
-                    required>
-                    <option selected disabled="true">Seleccione su carrera</option>
-                    <option *ngFor="let career of careersArray" [value]="career.carrera">
-                        {{career.carrera}}
-                    </option>
-                </select>
-            </div>
-            <p>¿Ya tienes cuenta? <a routerLink=""><span>Inicia Sesión</span></a></p>
-            <button type="submit" [disabled]="!f.valid">
-                <i class="spinner"></i>
-                <span class="state">Enviar</span>
-            </button>
-        </form>
-    </div>
-</body>
-
-</html>
+<div class="wrapper">
+    <form class="login" (ngSubmit)="onRegister()" novalidate #f="ngForm" id="formRegister">
+        <p class="title">REGISTRATE</p>
+        <div class="campo">
+            <label>Nombre</label>
+            <input type="text" placeholder="Nombre completo" name="nombre" [(ngModel)]="nombre" required autofocus>
+            <i class="fa fa-user"></i>
+        </div>
+        <div class="campo">
+            <label>Correo</label>
+            <input type="email" placeholder="Correo" name="correo" [(ngModel)]="correo" required>
+            <i class="fa fa-envelope"></i>
+        </div>
+        <div class="campo">
+            <label>Contraseña</label>
+            <input type="password" placeholder="Contraseña" name="password" [(ngModel)]="password" required>
+            <i class="fa fa-key"></i>
+        </div>
+        <div class="campo">
+            <label>Jornada</label>
+            <select class="form-select" aria-label="Default select example" name="jornada" [(ngModel)]="jornada"
+                required>
+                <option selected disabled="true">Seleccione su jornada</option>
+                <option value="MAÑANA">MAÑANA</option>
+                <option value="TARDE">TARDE</option>
+                <option value="NOCHE">NOCHE</option>
+            </select>
+        </div>
+        <div class="campo">
+            <label>Carrera</label>
+            <select class="form-select" aria-label="Default select example" name="carrera" [(ngModel)]="carrera"
+                required>
+                <option selected disabled="true">Seleccione su carrera</option>
+                <option *ngFor="let career of careersArray" [value]="career.carrera">
+                    {{career.carrera}}
+                </option>
+            </select>
+        </div>
+        <p>¿Ya tienes cuenta? <a routerLink=""><span>Inicia Sesión</span></a></p>
+        <button type="submit" [disabled]="!f.valid">
+            <i class="spinner"></i>
+            <span class="state">Enviar</span>
+        </button>
+    </form>
+</div>

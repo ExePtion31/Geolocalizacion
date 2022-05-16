@@ -15,13 +15,19 @@ import { UsuarioPrincipalComponent } from './usuario-principal/usuario-principal
 import { RegistroComponent } from './registro/registro.component';
 import { HomeComponent } from './home/home.component';
 import { SpinnerInterceptor } from './shared/intercerptors/spinner.intercerptor';
+import { AdminPrincipalComponent } from './admin/admin-principal/admin-principal.component';
+import { NavbarComponent } from './admin/navbar/navbar.component';
+import { PerfilComponent } from './admin/perfil/perfil.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegistroComponent,
     HomeComponent,
-    UsuarioPrincipalComponent
+    UsuarioPrincipalComponent,
+    AdminPrincipalComponent,
+    NavbarComponent,
+    PerfilComponent
   ],
   imports: [
     BrowserModule,
