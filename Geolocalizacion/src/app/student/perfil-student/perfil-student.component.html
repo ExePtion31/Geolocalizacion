@@ -1,0 +1,90 @@
+<head>
+    <title>{{user.nombre}} | Geolocalización</title>
+</head>
+
+<app-navbar-student></app-navbar-student>
+
+<div class="container">
+    <div class="main-body">
+        <div class="row gutters-sm">
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex flex-column align-items-center text-center">
+                            <img src="../../../assets/img/user.png" alt="Admin" class="rounded-circle" width="150">
+                            <div class="mt-3">
+                                <h4>{{user.nombre}}</h4>
+                                <p class="text-secondary mb-1">{{user.carrera}}</p>
+                                <p class="text-muted font-size-sm">{{user.correo}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="card mb-3">
+                    <h2>Actualizar Información</h2>
+                    <form novalidate (ngSubmit)="saveUser()">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">ID</h6>
+                                </div>
+                                <input type="email" name="id" id="" class="col-sm-9 text-secondary"
+                                    placeholder="{{user.id}}" readonly required>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Nombre</h6>
+                                </div>
+                                <input type="text" name="nombre" placeholder ="{{user.nombre}}" class="col-sm-9 text-secondary" required
+                                    [(ngModel)]="nombre">
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Correo</h6>
+                                </div>
+                                <input type="email" name="correo" placeholder="{{user.correo}}" class="col-sm-9 text-secondary" required
+                                    [(ngModel)]="correo">
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Carrera</h6>
+                                </div>
+                                <input type="text" name="carrera" id="" class="col-sm-9 text-secondary"
+                                    value="{{user.carrera}}" readonly required>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Jornada</h6>
+                                </div>
+                                <input type="text" name="jornada" id="" class="col-sm-9 text-secondary"
+                                    value="{{user.jornada}}" readonly required>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Contraseña</h6>
+                                </div>
+                                <input type="password" name="password" id="" class="col-sm-9 text-secondary"
+                                    [(ngModel)]="password" required>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <button type="submit" class="btn btn-info ">
+                                        Guardar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

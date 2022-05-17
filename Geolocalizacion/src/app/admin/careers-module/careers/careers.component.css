@@ -1,0 +1,21 @@
+thead {
+    background-color: #212529;
+    color: #fff;
+    font-weight: bold;
+}
+
+h1 {
+    text-align: center;
+}
+
+button {
+    margin: 1rem .5rem;
+}
+
+.table-users {
+    margin: 0 auto;
+    width: 99%;
+    padding: 1rem;
+    background-color: #fff;
+    border-radius: .5rem;
+}

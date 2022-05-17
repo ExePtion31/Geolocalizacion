@@ -1,0 +1,33 @@
+<head>
+    <title>Lista de Carreras | Geolocalización</title>
+</head>
+
+<app-navbar></app-navbar>
+
+<a routerLink="/careers/new">
+    <button class="btn btn-primary btn-lg btn-block"><i class="fas fa-edit"></i>Nuevo</button>
+</a>
+
+<div class="table-users">
+    <h1>Usuarios Registrados</h1>
+    <table class="table">
+        <thead class="p-4">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Carrera</th>
+                <th scope="col">Facultad</th>
+                <th scope="col">Editar</th>
+                <th scope="col">Borrar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let carrera of carreras">
+                <th scope="row">{{carrera.id}}</th>
+                <td>{{carrera.carrera}}</td>
+                <td>{{carrera.facultad}}</td>
+                <td><button class="btn btn-outline-warning" routerLink="/careers/edit/{{carrera.id}}"><i class="fas fa-edit"></i> Editar</button></td>
+                <td><button class="btn btn-outline-danger" (click)='borrar(carrera.id)'><i class="far fa-trash-alt"></i> Borrar</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

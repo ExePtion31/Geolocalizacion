@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -16,5 +17,25 @@ public class CareerServiceImpl implements ICareerService{
     @Override
     public List<Careers> listAll() {
         return repository.findAll();
+    }
+
+    @Override
+    public boolean existById(int id) {
+        return repository.existsById(id);
+    }
+
+    @Override
+    public Optional<Careers> getOne(int id) {
+        return repository.findById(id);
+    }
+
+    @Override
+    public Careers save(Careers carrera) {
+        return repository.save(carrera);
+    }
+
+    @Override
+    public void delete(int id) {
+        repository.deleteById(id);
     }
 }

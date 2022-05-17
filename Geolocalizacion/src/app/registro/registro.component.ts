@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StudentServiceService } from '../services/student-service.service';
-import { CareerServiceService } from '../services/career-service.service';
+import { CareerService } from '../services/career-service.service';
 import { ToastrService } from 'ngx-toastr';
 import { StudentCreate } from '../models/Student';
 import { Career } from '../models/Career';
@@ -24,7 +24,7 @@ export class RegistroComponent implements OnInit {
 
   constructor(
     private studentService: StudentServiceService,
-    private careerService: CareerServiceService,
+    private careerService: CareerService,
     private toastr: ToastrService,
     private router: Router
   ) { }
@@ -48,7 +48,7 @@ export class RegistroComponent implements OnInit {
   }
 
   onRegister():void {
-    const student = new StudentCreate(this.nombre, this.correo, this.password, this.jornada, this.carrera, 1);
+    const student = new StudentCreate(this.nombre.toUpperCase(), this.correo, this.password, this.jornada, this.carrera, 1);
     this.studentService.createStudent(student).subscribe(
       data => {
         this.toastr.success(data.message, 'Exito',{

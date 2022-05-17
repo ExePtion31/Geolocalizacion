@@ -1,0 +1,75 @@
+<head>
+    <title>Crear Usuario | Geolocalización</title>
+</head>
+
+<app-navbar></app-navbar>
+
+<div class="wrapper">
+    <div class="bg-light text-dark text-center div-new-user">
+        <h2>Nuevo Usuario</h2>
+        <form (ngSubmit)="onRegister()" novalidate #f="ngForm" id="formRegister">
+            <!-- name input -->
+            <div class="form-outline mb-4">
+                <label class="form-label" for="form6Example3">Nombre</label>
+                <input type="text" id="form6Example3" class="form-control" placeholder="Nombre completo" name="nombre"
+                    [(ngModel)]="nombre" required autofocus>
+            </div>
+
+            <!-- correo input -->
+            <div class="form-outline mb-4">
+                <label class="form-label" for="form6Example4">Correo</label>
+                <input type="email" id="form6Example4" class="form-control" placeholder="Correo" name="correo"
+                    [(ngModel)]="correo" required>
+            </div>
+
+
+            <!-- 2 column grid layout with text inputs for the jornada and career -->
+            <div class="row mb-4">
+                <div class="col">
+                    <div class="form-outline">
+                        <label class="form-label" for="form6Example1">Jornada</label>
+                        <select class="form-select" aria-label="Default select example" name="jornada"
+                            [(ngModel)]="jornada" required>
+                            <option selected disabled="true">Seleccione su jornada</option>
+                            <option value="MAÑANA">MAÑANA</option>
+                            <option value="TARDE">TARDE</option>
+                            <option value="NOCHE">NOCHE</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-outline">
+                        <label class="form-label" for="form6Example2">Carrera</label>
+                        <select class="form-select" aria-label="Default select example" name="carrera"
+                            [(ngModel)]="carrera" required>
+                            <option selected disabled="true">Seleccione su carrera</option>
+                            <option *ngFor="let career of careersArray" [value]="career.carrera">
+                                {{career.carrera}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- rol input -->
+            <div class="form-outline mb-4">
+                <label class="form-label" for="form6Example6">Rol</label>
+                <select class="form-select" aria-label="Default select example" name="rol" [(ngModel)]="rol" required>
+                    <option selected disabled="true">Seleccione un rol</option>
+                    <option value="0">Administrador</option>
+                    <option value="1">Estudiante</option>
+                </select>
+            </div>
+
+            <!-- password input -->
+            <div class="form-outline mb-4">
+                <label class="form-label" for="form6Example5">Contraseña</label>
+                <input type="password" id="form6Example5" class="form-control" placeholder="Contraseña" name="password"
+                    [(ngModel)]="password" required>
+            </div>
+
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-primary btn-block mb-4" [disabled]="!f.valid">CREAR</button>
+        </form>
+    </div>
+</div>

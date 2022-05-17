@@ -1,0 +1,37 @@
+<head>
+    <title>Lista de Usuario | Geolocalización</title>
+</head>
+
+<app-navbar></app-navbar>
+
+<a routerLink="/users/new">
+    <button class="btn btn-primary btn-lg btn-block" ><i class="fas fa-edit"></i>Nuevo</button>
+</a>
+
+<div class="table-users">
+    <h1>Usuarios Registrados</h1>
+    <table class="table">
+        <thead class="p-4">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Correo</th>
+                <th scope="col">Carrera</th>
+                <th scope="col">Jornada</th>
+                <th scope="col">Editar</th>
+                <th scope="col">Borrar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users">
+                <th scope="row">{{user.id}}</th>
+                <td>{{user.nombre}}</td>
+                <td>{{user.correo}}</td>
+                <td>{{user.carrera}}</td>
+                <td>{{user.jornada}}</td>
+                <td><button class="btn btn-outline-warning" routerLink="/users/edit/{{user.id}}"><i class="fas fa-edit"></i> Editar</button></td>
+                <td><button class="btn btn-outline-danger" (click)='borrar(user.id)'><i class="far fa-trash-alt"></i> Borrar</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

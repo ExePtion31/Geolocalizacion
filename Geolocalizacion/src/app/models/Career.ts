@@ -9,3 +9,13 @@ export class Career {
         this.facultad = facultad;
     }
 }
+
+export class CareerCreate {
+    carrera: string;
+    facultad: string;
+
+    constructor(carrera: string, facultad: string) {
+        this.carrera = carrera;
+        this.facultad = facultad;
+    }
+}

@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { requestLogin } from '../models/requestLogin';
+import { Router } from '@angular/router';
+
 import { ToastrService } from 'ngx-toastr';
 import { StudentServiceService } from '../services/student-service.service';
-import { Router } from '@angular/router';
+import { requestLogin } from '../models/requestLogin';
+import { DataService } from '../services/data.service'
 
 @Component({
   selector: 'app-home',
@@ -11,33 +13,41 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  correo:string = '';
-  password:string = '';
+  correo: string = '';
+  password: string = '';
 
   constructor(
     private studentService: StudentServiceService,
     private toastr: ToastrService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private dataService: DataService
+  ) { }
 
   ngOnInit(): void {
   }
 
-  onValidate():void{
+  onValidate(): void {
     const request = new requestLogin(this.correo, this.password);
-    this.studentService.fetchUser(request).subscribe(
+    this.studentService.validateUser(request).subscribe(
       data => {
-        this.toastr.success('', 'Exito',{
-          timeOut:3000
+        this.toastr.success('', 'Exito', {
+          timeOut: 3000
         });
-        if(data.role === 1){
-          this.router.navigate(['userIndex', data.id]);
+
+        this.dataService.isLogged = true;
+        this.dataService.idUser = data.id;
+        this.dataService.nombreUser = data.nombre;
+        this.dataService.rolUser = data.role;
+
+        if (data.role === 0) {
+          this.router.navigate(['adminIndex']);
+        } else if (data.role === 1) {
+          this.router.navigate(['userIndex']);
         }
       },
       err => {
-        console.log(err);
-        this.toastr.error(err.error.message, 'Error',{
-          timeOut:3000
+        this.toastr.error(err.error.message, 'Error', {
+          timeOut: 3000
         });
       }
     );

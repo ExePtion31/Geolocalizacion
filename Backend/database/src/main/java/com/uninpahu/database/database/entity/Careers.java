@@ -14,8 +14,7 @@ public class Careers {
     public Careers() {
     }
 
-    public Careers(int id, String facultad, String carrera) {
-        this.id = id;
+    public Careers(String facultad, String carrera) {
         this.facultad = facultad;
         this.carrera = carrera;
     }

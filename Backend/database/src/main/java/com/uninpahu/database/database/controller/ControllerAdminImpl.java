@@ -119,6 +119,6 @@ public class ControllerAdminImpl implements IControllerAdmin{
 
         //delete of developer
         adminService.delete(id);
-        return new ResponseEntity(new Message("Usuario eliminado exitosamente."), HttpStatus.NOT_FOUND);
+        return new ResponseEntity(new Message("Usuario eliminado exitosamente."), HttpStatus.OK);
     }
 }

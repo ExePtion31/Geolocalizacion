@@ -1,0 +1,8 @@
+.div-new-user {
+    padding: 2rem;
+    border-radius: .5rem;
+}
+
+.div-new-user label {
+    font-weight: bold;
+}

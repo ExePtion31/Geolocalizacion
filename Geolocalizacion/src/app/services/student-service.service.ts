@@ -16,7 +16,7 @@ export class StudentServiceService {
   ) { }
 
   //fetchUser student
-  public fetchUser(request: requestLogin): Observable<any>{
+  public validateUser(request: requestLogin): Observable<any>{
     return this.httpClient.post<any>(this.studentURL + 'validation/login', request);
   }
 

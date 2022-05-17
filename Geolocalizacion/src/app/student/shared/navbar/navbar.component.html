@@ -1,0 +1,38 @@
+<div class="pos-f-t">
+    <div class="collapse" id="navbarToggleExternalContent">
+        <div class="bg-dark p-4">
+            <h5 class="text-white h4 text-center">Menú Principal</h5>
+            <div class="menu-option">
+                <a routerLink="/userIndex">
+                    <i class="fa-solid fa-house-chimney fa-2x"></i>
+                    <p>Inicio</p>
+                </a>
+            </div>
+            <div class="menu-option">
+                <a routerLink="/perfil-student">
+                    <i class="fa-solid fa-circle-user fa-2x"></i>
+                    <p>Perfil</p>
+                </a>
+            </div>
+            <div class="menu-option">
+                <a routerLink="/map-student">
+                    <i class="fa-solid fa-map-location-dot fa-2x"></i>
+                    <p>Mapa</p>
+                </a>
+            </div>
+            <div class="menu-option">
+                <a (click)="logOut()">
+                    <i class="fa-solid fa-arrow-right-from-bracket fa-2x"></i>
+                    <p>Salir</p>
+                </a>
+            </div>
+        </div>
+    </div>
+    <nav class="navbar navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent"
+            aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <p>Bienvenido <a routerLink="/perfil"><span>{{nombre}}</span></a></p>
+    </nav>
+</div>

@@ -1,0 +1,29 @@
+<head>
+    <title>Crear Carrera | Geolocalización</title>
+</head>
+
+<app-navbar></app-navbar>
+
+<div class="wrapper">
+    <div class="bg-light text-dark text-center div-new-user">
+        <h2>Nueva Carrera</h2>
+        <form (ngSubmit)="onRegister()" novalidate #f="ngForm" id="formRegister">
+            <!-- name input -->
+            <div class="form-outline mb-4">
+                <label class="form-label" for="form6Example3">Carrera</label>
+                <input type="text" id="form6Example3" class="form-control" placeholder="Carrera" name="carrera"
+                    [(ngModel)]="carrera" required autofocus>
+            </div>
+
+            <!-- correo input -->
+            <div class="form-outline mb-4">
+                <label class="form-label" for="form6Example4">Facultad</label>
+                <input type="text" id="form6Example4" class="form-control" placeholder="Facultad" name="facultad"
+                    [(ngModel)]="facultad" required>
+            </div>
+            
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-primary btn-block mb-4" [disabled]="!f.valid">CREAR</button>
+        </form>
+    </div>
+</div>
